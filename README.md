@@ -2,6 +2,14 @@
 
 A [Reveal.js](https://github.com/hakimel/reveal.js) plugin that allows live CSS editing in code blocks.
 
+## Installation
+
+Using [npm](https://www.npmjs.com/):
+
+```bash
+npm install --save reveal-css-snippet
+```
+
 ## Demo
 Play with it on [Codepen](http://codepen.io/soluml/pen/QbQmoa)!
 
@@ -21,8 +29,9 @@ RevealCSSSnippet({
 });
 ```
 
-##Examples
-###Presentation Wide CSS Snippet:
+## Examples
+
+### Presentation Wide CSS Snippet:
 
 **_HTML:_**
 ```html
