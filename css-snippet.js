@@ -4,7 +4,12 @@ window.RevealCSSSnippet = function(O) {
     var pre = document.createElement('pre'),
         txt = document.createElement('code'),
         stl = document.createElement('style'),
-        ts  = new Date().getTime();
+        ts;
+
+    //Get Random ID
+    do {
+        ts = parseInt((Math.random() * 100000), 10);
+    } while (document.getElementById('csssnippet-'+ ts));
 
     function addEvent(el, type, fn) {
         if(el.attachEvent) {
