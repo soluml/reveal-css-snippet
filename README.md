@@ -2,6 +2,8 @@
 
 A [Reveal.js](https://github.com/hakimel/reveal.js) plugin that allows live CSS editing in code blocks.
 
+## Demo
+Play with it on [Codepen](https://github.com/soluml/reveal-css-snippet)!
 
 ## Usage
 
