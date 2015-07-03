@@ -45,7 +45,7 @@ window.RevealCSSSnippet = function(O) {
         var stl = document.getElementById('csssnippet-'+ ts),
             val = (txt.textContent || txt.innerText).replace(/\s/g, ' ').trim();
 
-        if(O.el == 'scope')
+        if(O.el)
             stl.innerHTML = '[data-csssnippet="'+ ts +'"]{'+ val +'}';
         else
             stl.innerHTML = val;
