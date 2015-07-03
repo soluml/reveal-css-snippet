@@ -1,4 +1,4 @@
-window.RevealCSSSnippet = function(O) {
+window.RevealCSSSnippet = function (O) {
     'use strict';
 
     var pre = document.createElement('pre'),
@@ -9,17 +9,18 @@ window.RevealCSSSnippet = function(O) {
     //Get Random ID
     do {
         ts = parseInt((Math.random() * 100000), 10);
-    } while (document.getElementById('csssnippet-'+ ts));
+    } while (document.getElementById('csssnippet-' + ts));
 
     function addEvent(el, type, fn) {
-        if(el.attachEvent) {
-            el['e'+ type + fn] = fn;
-            el[type + fn] = function() {
+        if (el.attachEvent) {
+            el['e' + type + fn] = fn;
+            el[type + fn] = function () {
                 el['e' + type + fn](window.event);
-            }
-            el.attachEvent('on'+ type, el[type + fn]);
-        } else
+            };
+            el.attachEvent('on' + type, el[type + fn]);
+        } else {
             el.addEventListener(type, fn, false);
+        }
     }
     
     function insertTextAtCursor(text) {
@@ -27,10 +28,10 @@ window.RevealCSSSnippet = function(O) {
             range,
             textNode;
 
-        if(window.getSelection) {
+        if (window.getSelection) {
             sel = window.getSelection();
 
-            if(sel.getRangeAt && sel.rangeCount) {
+            if (sel.getRangeAt && sel.rangeCount) {
                 range = sel.getRangeAt(0);
                 range.deleteContents();
                 textNode = document.createTextNode(text);
@@ -40,20 +41,21 @@ window.RevealCSSSnippet = function(O) {
                 sel.removeAllRanges();
                 sel.addRange(range);
             }
-        } else if(document.selection && document.selection.createRange) {
+        } else if (document.selection && document.selection.createRange) {
             range = document.selection.createRange();
             range.pasteHTML(text);
         }
     }
     
     function keyup() {
-        var stl = document.getElementById('csssnippet-'+ ts),
+        var stl = document.getElementById('csssnippet-' + ts),
             val = (txt.textContent || txt.innerText).replace(/\s/g, ' ').trim();
 
-        if(O.el)
-            stl.innerHTML = '[data-csssnippet="'+ ts +'"]{'+ val +'}';
-        else
+        if (O.el) {
+            stl.innerHTML = '[data-csssnippet="' + ts + '"]{' + val + '}';
+        } else {
             stl.innerHTML = val;
+        }
     }
 
     function keydown(e) {
@@ -61,13 +63,13 @@ window.RevealCSSSnippet = function(O) {
             val = txt.textContent || txt.innerText;
         
         //Tab Button
-        if(key == 9) {
+        if (key === 9) {
             insertTextAtCursor('  ');
             e.preventDefault();
         }
     }
 
-    stl.setAttribute('id', 'csssnippet-'+ ts);
+    stl.setAttribute('id', 'csssnippet-' + ts);
     document.head.appendChild(stl);
     txt.setAttribute('contenteditable', 'true');
     txt.setAttribute('class', 'css');
@@ -80,11 +82,12 @@ window.RevealCSSSnippet = function(O) {
     addEvent(txt, 'keydown', keydown);
     addEvent(txt, 'keyup', keyup);
 
-    if(O.el)
+    if (O.el) {
         O.el.setAttribute('data-csssnippet', ts);
+    }
     
-    if(O.default) {
-        txt.appendChild(document.createTextNode(O.default));
+    if (O.cssValue) {
+        txt.appendChild(document.createTextNode(O.cssValue));
         keyup();
     }
 
