@@ -60,7 +60,7 @@ Reveal.initialize({
     ]
 ```
 
-###Element Scoped CSS Snippet:
+### Element Scoped CSS Snippet:
 
 **_HTML:_**
 ```html
