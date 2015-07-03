@@ -5,12 +5,24 @@ A [Reveal.js](https://github.com/hakimel/reveal.js) plugin that allows live CSS 
 
 ## Usage
 
-`reveal-css-snippet` gives you a code block that can live edit the page styles. This can be very useful when giving live code demo's. The plugin allows you to target the entire presentation or scope it to a single element. 
+`RevealCSSSnippet()` returns a `<pre><code>` DOM node that allows you to live edit the presentations css styles which is useful for giving live coding demo's. You can then append this DOM node to any element in the presentation that you wish.
 
+Optionally, you can pass in an object with two properties defined below. Both are optional:
 
-**Presentation Wide CSS Snippet:**
+```js
+RevealCSSSnippet({
+    //el is a DOM node that you wish to scope the CSS too. The scoping is done via attribute selector, so beware of specificity issues with existing styles. The default is no scoping, which allows you to write CSS to target anything in the presentation.
+    el: document.getElementById('targetElement'),
+    
+    //cssValue is the default CSS to be loaded into the block at initialization. The default is empty string.
+    cssValue: "background: #ff0;\r\nwidth: 500px;\r\nheight: 50px;"
+});
+```
 
-_HTML:_
+##Examples
+###Presentation Wide CSS Snippet:
+
+**_HTML:_**
 ```html
 <!-- This section is a slide. -->
 <section id="csssnip-slide">
@@ -18,7 +30,7 @@ _HTML:_
 </section>
 ```
 
-_In Reveal.initialize [index.html]:_
+**_In Reveal.initialize [index.html]:_**
 ```js
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
@@ -37,9 +49,9 @@ Reveal.initialize({
     ]
 ```
 
-**Element Scoped CSS Snippet:**
+###Element Scoped CSS Snippet:
 
-_HTML:_
+**_HTML:_**
 ```html
 <!-- This section is a slide. -->
 <section id="csssnip-slide">
@@ -48,7 +60,7 @@ _HTML:_
 </section>
 ```
 
-_In Reveal.initialize [index.html]:_
+**_In Reveal.initialize [index.html]:_**
 ```js
 // https://github.com/hakimel/reveal.js#configuration
 Reveal.initialize({
