@@ -6,7 +6,6 @@ window.RevealCSSSnippet = function (O) {
         stl = document.createElement('style'),
         ts;
 
-    //Get Random ID
     do {
         ts = parseInt((Math.random() * 100000), 10);
     } while (document.getElementById('csssnippet-' + ts));
